@@ -15,9 +15,10 @@ import { db } from '../firebase';
 
 // }
 const getGeoLocationDetails= ()=>{
-    fetch("https://geolocation-db.com/json/afa4d000-8eb9-11eb-a6ff-2538b793e762")
+    fetch( "https://api.ipify.org/?format=json")
     .then(response =>response.json())
     .then(data=>setDetails(data))
+  //  console.log(details.ip)
     }
 
 
@@ -25,10 +26,10 @@ const getGeoLocationDetails= ()=>{
     const handleSubmit=(e)=>{
         e.preventDefault();
         getGeoLocationDetails();
-       
-
-           var ipa=details.IPv4;
-           console.log(ipa);
+   
+      
+    var ipa=details.ip;
+    //       console.log(ipa);
 
 
 

@@ -50,7 +50,7 @@ export default class Display extends Component{
             <div>
                 {
                   this.state.dataSource.map((user)=>{
-                    return<div><center>{user.comments}</center></div>
+                    return<div ><center>{user.comments}</center></div>
                   })
                 }
 
