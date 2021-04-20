@@ -28,6 +28,7 @@ const getGeoLocationDetails= ()=>{
        
 
            var ipa=details.IPv4;
+           console.log(ipa);
 
 
 
