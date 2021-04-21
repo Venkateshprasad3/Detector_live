@@ -1,5 +1,8 @@
 import React,{Component} from 'react';
 import { db } from '../firebase';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 export default class Display extends Component{
     constructor(props)
     {
@@ -50,10 +53,13 @@ export default class Display extends Component{
             <div>
                 {
                   this.state.dataSource.map((user)=>{
-                    return<div ><center>{user.comments}</center></div>
+                    return<div><List component="nav">
+                    <ListItem>
+                      <ListItemText primary={user.comments} />
+                    </ListItem>
+                    </List></div>
                   })
                 }
-
             </div>
        )
      }

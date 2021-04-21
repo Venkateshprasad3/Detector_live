@@ -5,36 +5,16 @@ import { db } from '../firebase';
 
     
   
-      const Contact =()=> {
+    const Contact =()=> {
+    const [name,SetName]=useState("");
+    
 
-    const [details,setDetails]=useState("");
-   
-// 
-  
-//     alert(details.IPv4);
-
-// }
 const getGeoLocationDetails= ()=>{
     fetch( "https://api.ipify.org/?format=json")
-    .then(response =>response.json())
-    .then(data=>setDetails(data))
-  //  console.log(details.ip)
-    }
-
-
-    const [name,SetName]=useState("");
-    const handleSubmit=(e)=>{
-        e.preventDefault();
-        getGeoLocationDetails();
-   
-      
-    var ipa=details.ip;
-    //       console.log(ipa);
-
-
-
+    .then(response => response.json())
+    .then(data => { 
         db.collection('comments').add({
-            ip:ipa,
+            ip:data.ip,
             comments:name
         })
         .then(()=>{
@@ -42,10 +22,27 @@ const getGeoLocationDetails= ()=>{
         })
         .catch( error=>{
             alert("unsucessful submission");
-        })
+        });
+     });
 
-        SetName('');
-    };
+
+   /* */
+
+    SetName('');
+    }
+
+
+  
+    // const handleSubmit=(e)=>{
+    //     e.preventDefault();
+    //     getGeoLocationDetails();
+   
+    // //       console.log(ipa);
+
+
+
+        
+    // };
 
     return(
       <div>
@@ -53,7 +50,7 @@ const getGeoLocationDetails= ()=>{
             <textarea value={name} onChange={(e)=>SetName(e.target.value)}></textarea>
             <br/>
             
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={getGeoLocationDetails}>Submit</button>
         
         </center>
       </div>
